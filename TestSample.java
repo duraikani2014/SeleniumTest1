@@ -24,7 +24,7 @@ public class TestSample  {
         // Now submit the form
         element.submit();
 
-        //Close the browser/quit the browser
+        //Close the browser/quit the browserawfaafsaas
         driver.quit();
     }
 }
