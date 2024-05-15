@@ -1,20 +1,20 @@
-pipeline{
-
-	agent any
-	parameters{
-           string(name:'Greeting',  defaultValue: 'Hello', description: 'How should i greet the world?')
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                sh 'mvn -B -DskipTests clean package'
+            }
         }
-	stages {
-	      stage("Greeting"){
-        	steps {
-                    	echo "${params.Greeting} World"
-                     }
-              }
-	       stage("Building"){
-		steps {
-			echo "Building..."
-		     }
-	      } 
-	     
-      }
+        stage('Test') { 
+            steps {
+                sh 'mvn test' 
+            }
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml' 
+                }
+            }
+        }
+    }
 }
