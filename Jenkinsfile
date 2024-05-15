@@ -10,7 +10,11 @@ pipeline{
                     	echo "${params.Greeting} World"
                      }
               }
-                
+	       stage("Building"){
+		steps {
+			echo "Building..."
+		     }
+	      } 
 	     
       }
 }
