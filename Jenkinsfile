@@ -13,10 +13,14 @@ pipeline{
                        }
                   }
 		stage("Build"{
-			echo "building"
+			steps {
+                           echo "building...."
+                          }
 		}
 	      stage("test"){
-			echo "testing"
+			steps {
+                           echo "Testing....,"
+                          }
 	      }
       }
 }
